@@ -45,20 +45,43 @@ export default function Contact() {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    toast({
-      title: t("contact.success"),
-      description: t("contact.success.desc"),
-    })
-
-    setFormData({ name: "", email: "", message: "" })
-    setIsSubmitting(false)
-  }
+    e.preventDefault();
+    setIsSubmitting(true);
+  
+    // Preparamos el payload en formato x-www-form-urlencoded
+    const payload = new URLSearchParams({
+      "form-name": "contact",
+      name:     formData.name,
+      email:    formData.email,
+      message:  formData.message,
+    });
+  
+    try {
+      // Enviamos al endpoint estático que Netlify detecta en public/__forms.html
+      await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: payload.toString(),
+      });
+  
+      toast({
+        title: t("contact.success"),
+        description: t("contact.success.desc"),
+      });
+  
+      // Reseteamos el formulario
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error("Error enviando form a Netlify:", err);
+      toast({
+        title: t("contact.error") || "Error al enviar",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
 
   const socialLinks = [
     {
