@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -9,6 +8,7 @@ import { ExternalLink, Github, Code } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useLanguage } from "@/contexts/language-context"
 import { Badge } from "@/components/ui/badge"
+import { useScrollAnimation, createAnimationVariants } from "@/hooks/use-scroll-animation"
 
 type ProjectCategory = "all" | "ai" | "dashboard" | "web" | "chatbot"
 
@@ -31,25 +31,14 @@ interface Project {
 }
 
 export default function Projects() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.1 })
+  const containerRef = useRef(null)
   const { t, language } = useLanguage()
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>("all")
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  }
+  // Usar diferentes variantes de animación para diferentes elementos
+  const titleAnimation = useScrollAnimation({ variant: "fadeIn", threshold: 0.1 })
+  const filterAnimation = useScrollAnimation({ variant: "slideUp", threshold: 0.1, delay: 0.2 })
+  const gridAnimation = useScrollAnimation({ variant: "fadeIn", threshold: 0.1, delay: 0.3 })
 
   const projects: Project[] = [
     {
@@ -71,8 +60,8 @@ export default function Projects() {
     {
       id: "grc-shield",
       title: {
-        EN: "Safety Shield – AI Risk Monitoring Dashboard",
-        ES: "Safety Shield – Dashboard de Monitoreo de Riesgos de IA",
+        EN: "GRC Shield – AI Risk Monitoring Dashboard",
+        ES: "GRC Shield – Dashboard de Monitoreo de Riesgos de IA",
       },
       description: {
         EN: "Real-time dashboard for AI risk monitoring, including prompt injection detection, data leakage, and behavioral drift. Modular backend with Firebase and Cloud Run.",
@@ -158,22 +147,29 @@ export default function Projects() {
   ]
 
   return (
-    <section id="projects" className="py-20 bg-muted/30 dark:bg-muted/10" ref={ref}>
+    <section id="projects" className="py-20 bg-muted/30 dark:bg-muted/10" ref={containerRef}>
       <div className="container mx-auto px-4">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="max-w-6xl mx-auto"
-        >
-          <motion.div variants={itemVariants} className="text-center mb-12">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            ref={titleAnimation.ref}
+            initial="hidden"
+            animate={titleAnimation.isInView ? "visible" : "hidden"}
+            variants={titleAnimation.variants}
+            className="text-center mb-12"
+          >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("projects.title")}</h2>
             <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
             <p className="text-muted-foreground max-w-2xl mx-auto">{t("projects.subtitle")}</p>
           </motion.div>
 
           {/* Filter Controls */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-2 mb-10">
+          <motion.div
+            ref={filterAnimation.ref}
+            initial="hidden"
+            animate={filterAnimation.isInView ? "visible" : "hidden"}
+            variants={filterAnimation.variants}
+            className="flex flex-wrap justify-center gap-2 mb-10"
+          >
             <div className="inline-flex items-center bg-card rounded-full p-1 border border-border">
               {filterOptions.map((option) => (
                 <button
@@ -190,9 +186,24 @@ export default function Projects() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <motion.div key={project.id} variants={itemVariants}>
+          <motion.div
+            ref={gridAnimation.ref}
+            initial="hidden"
+            animate={gridAnimation.isInView ? "visible" : "hidden"}
+            variants={gridAnimation.variants}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                variants={createAnimationVariants("zoomIn", 0.1 * index, 0.5)}
+                initial="hidden"
+                animate="visible"
+                whileHover={{
+                  y: -10,
+                  transition: { duration: 0.3 },
+                }}
+              >
                 <Card className="h-full flex flex-col overflow-hidden hover:shadow-lg transition-shadow group">
                   <div className="relative h-48 overflow-hidden">
                     <Image
@@ -295,8 +306,8 @@ export default function Projects() {
                 </Card>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
