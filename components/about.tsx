@@ -41,7 +41,7 @@ export default function About() {
             >
               <div className="relative w-full aspect-square max-w-md mx-auto overflow-hidden rounded-2xl">
                 <Image
-                  src="/placeholder.svg?height=500&width=500"
+                  src="/max.png?height=500&width=500"
                   alt="Maximiliano Ezequiel Acri"
                   width={500}
                   height={500}

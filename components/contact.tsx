@@ -34,20 +34,43 @@ export default function Contact() {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    toast({
-      title: t("contact.success"),
-      description: t("contact.success.desc"),
-    })
-
-    setFormData({ name: "", email: "", message: "" })
-    setIsSubmitting(false)
-  }
+    e.preventDefault();
+    setIsSubmitting(true);
+  
+    // Preparamos el payload en formato x-www-form-urlencoded
+    const payload = new URLSearchParams({
+      "form-name": "contact",
+      name:     formData.name,
+      email:    formData.email,
+      message:  formData.message,
+    });
+  
+    try {
+      // Enviamos al endpoint estático que Netlify detecta en public/__forms.html
+      await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: payload.toString(),
+      });
+  
+      toast({
+        title: t("contact.success"),
+        description: t("contact.success.desc"),
+      });
+  
+      // Reseteamos el formulario
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error("Error enviando form a Netlify:", err);
+      toast({
+        title: t("contact.error") || "Error al enviar",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
 
   const socialLinks = [
     {
@@ -153,100 +176,62 @@ export default function Contact() {
               animate={rightColumnAnimation.isInView ? "visible" : "hidden"}
               variants={rightColumnAnimation.variants}
             >
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={rightColumnAnimation.isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    {t("contact.name")}
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder={t("contact.name.placeholder")}
-                    required
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={rightColumnAnimation.isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    {t("contact.email")}
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder={t("contact.email.placeholder")}
-                    required
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={rightColumnAnimation.isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    {t("contact.message")}
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder={t("contact.message.placeholder")}
-                    rows={5}
-                    required
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={rightColumnAnimation.isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? (
-                      <span className="flex items-center">
-                        <svg
-                          className="animate-spin -ml-1 mr-2 h-4 w-4"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        {t("contact.sending")}
-                      </span>
-                    ) : (
-                      <span className="flex items-center">
-                        {t("contact.send")} <Send className="ml-2 h-4 w-4" />
-                      </span>
-                    )}
-                  </Button>
-                </motion.div>
-              </form>
+<form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  className="space-y-6"
+>
+  {/* Honeypot para bots */}
+  <input type="hidden" name="form-name" value="contact" />
+  <input type="hidden" name="bot-field" />
+
+  {/* Nombre */}
+  <div>
+    <label htmlFor="name" className="block text-sm font-medium mb-2">
+      Nombre *
+    </label>
+    <Input
+      id="name"
+      name="name"
+      placeholder="Tu nombre"
+      required
+    />
+  </div>
+
+  {/* Empresa */}
+  <div>
+    <label htmlFor="company" className="block text-sm font-medium mb-2">
+      Empresa
+    </label>
+    <Input
+      id="company"
+      name="company"
+      placeholder="Tu empresa"
+    />
+  </div>
+
+  {/* Mensaje */}
+  <div>
+    <label htmlFor="message" className="block text-sm font-medium mb-2">
+      Mensaje *
+    </label>
+    <Textarea
+      id="message"
+      name="message"
+      placeholder="Tu mensaje"
+      rows={5}
+      required
+    />
+  </div>
+
+  {/* Botón de envío */}
+  <Button type="submit" className="w-full">
+    Enviar
+  </Button>
+</form>
+
             </motion.div>
           </div>
         </div>
