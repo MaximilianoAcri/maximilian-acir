@@ -49,6 +49,7 @@ export default function About() {
                   width={500}
                   height={500}
                   className="object-cover"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay"></div>
               </div>

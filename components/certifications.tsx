@@ -3,13 +3,13 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { Award, BookOpen, Calendar } from "lucide-react"
+import { Award, BookOpen, Calendar, Lightbulb } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 
 export default function Certifications() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -46,11 +46,46 @@ export default function Certifications() {
 
   const education = [
     {
-      institution: "Universidad Nacional de La Matanza (UNLaM)",
-      degree: "15 subjects in Labor Relations",
+      institution: {
+        EN: "Universidad Nacional de La Matanza (UNLaM)",
+        ES: "Universidad Nacional de La Matanza (UNLaM)",
+      },
+      degree: {
+        EN: "Technical Degree in Labor Relations",
+        ES: "Técnico en Relaciones Laborales",
+      },
       year: "2018-2020",
     },
   ]
+
+  const continuousEducation = {
+    title: {
+      EN: "Continuous Learning",
+      ES: "Aprendizaje Continuo",
+    },
+    description: {
+      EN: "Over 5 years of intensive training in web development, programming languages, and generative AI technologies (LLMs), always staying updated with the latest tools in the market.",
+      ES: "Más de 5 años de formación intensiva en desarrollo web, lenguajes de programación y tecnologías de inteligencia artificial generativa (LLMs), manteniéndome siempre actualizado con las últimas herramientas del mercado.",
+    },
+    areas: [
+      {
+        EN: "AI/ML Workshops",
+        ES: "Talleres de IA/ML",
+      },
+      {
+        EN: "Cloud Architecture",
+        ES: "Arquitectura Cloud",
+      },
+      {
+        EN: "Tech Conferences",
+        ES: "Conferencias Tech",
+      },
+      {
+        EN: "Online Courses",
+        ES: "Cursos Online",
+      },
+    ],
+  }
 
   return (
     <section id="certifications" className="py-20 bg-background" ref={ref}>
@@ -110,32 +145,43 @@ export default function Certifications() {
               <div className="space-y-6">
                 {education.map((edu) => (
                   <motion.div
-                    key={edu.institution}
+                    key={typeof edu.institution === "string" ? edu.institution : edu.institution.EN}
                     variants={itemVariants}
                     className="bg-card rounded-lg p-6 border border-border"
                   >
                     <div className="flex justify-between items-center mb-4">
-                      <h4 className="text-xl font-semibold">{edu.institution}</h4>
+                      <h4 className="text-xl font-semibold">
+                        {typeof edu.institution === "string"
+                          ? edu.institution
+                          : edu.institution[language as keyof typeof edu.institution]}
+                      </h4>
                       <div className="flex items-center text-muted-foreground">
                         <Calendar className="h-4 w-4 mr-1" />
                         <span>{edu.year}</span>
                       </div>
                     </div>
-                    <p className="text-muted-foreground">{edu.degree}</p>
+                    <p className="text-muted-foreground">
+                      {typeof edu.degree === "string" ? edu.degree : edu.degree[language as keyof typeof edu.degree]}
+                    </p>
                   </motion.div>
                 ))}
 
                 <motion.div variants={itemVariants} className="bg-primary/10 rounded-lg p-6 border border-primary/20">
-                  <h4 className="text-xl font-semibold mb-4">{t("cert.continuous")}</h4>
-                  <p className="text-muted-foreground mb-4">{t("cert.continuous.desc")}</p>
+                  <div className="flex items-center mb-4">
+                    <Lightbulb className="h-5 w-5 text-primary mr-2" />
+                    <h4 className="text-xl font-semibold">
+                      {continuousEducation.title[language as keyof typeof continuousEducation.title]}
+                    </h4>
+                  </div>
+                  <p className="text-muted-foreground mb-4">
+                    {continuousEducation.description[language as keyof typeof continuousEducation.description]}
+                  </p>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">
-                      {t("cert.workshops")}
-                    </span>
-                    <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">{t("cert.cloud")}</span>
-                    <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">
-                      {t("cert.conferences")}
-                    </span>
+                    {continuousEducation.areas.map((area, index) => (
+                      <span key={index} className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">
+                        {typeof area === "string" ? area : area[language as keyof typeof area]}
+                      </span>
+                    ))}
                   </div>
                 </motion.div>
               </div>

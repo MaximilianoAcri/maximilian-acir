@@ -2,12 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-import { ArrowRight, Download, Mail } from "lucide-react"
+import { ArrowRight, Download, Mail, Brain, Server, Code } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
 
 export default function Hero() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -64,6 +64,27 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <p className="text-lg md:text-xl mb-8">{t("hero.subtitle")}</p>
+          </motion.div>
+
+          {/* Expertise badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex flex-wrap justify-center gap-3 mb-8"
+          >
+            <div className="flex items-center bg-primary/10 rounded-full px-4 py-2">
+              <Brain className="h-4 w-4 text-primary mr-2" />
+              <span className="text-sm font-medium">{t("hero.expertise.ai")}</span>
+            </div>
+            <div className="flex items-center bg-primary/10 rounded-full px-4 py-2">
+              <Server className="h-4 w-4 text-primary mr-2" />
+              <span className="text-sm font-medium">{t("hero.expertise.cloud")}</span>
+            </div>
+            <div className="flex items-center bg-primary/10 rounded-full px-4 py-2">
+              <Code className="h-4 w-4 text-primary mr-2" />
+              <span className="text-sm font-medium">{t("hero.expertise.fullstack")}</span>
+            </div>
           </motion.div>
 
           <motion.div

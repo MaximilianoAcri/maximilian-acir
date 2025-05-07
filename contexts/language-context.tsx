@@ -63,6 +63,18 @@ const translations = {
     EN: "Download CV",
     ES: "Descargar CV",
   },
+  "hero.expertise.ai": {
+    EN: "AI Expert",
+    ES: "Experto en IA",
+  },
+  "hero.expertise.cloud": {
+    EN: "Cloud Architect",
+    ES: "Arquitecto Cloud",
+  },
+  "hero.expertise.fullstack": {
+    EN: "Full-Stack Developer",
+    ES: "Desarrollador Full-Stack",
+  },
 
   // About
   "about.title": {
@@ -155,6 +167,14 @@ const translations = {
     EN: "Design",
     ES: "Diseño",
   },
+  "tech.projects": {
+    EN: "Projects & Applications",
+    ES: "Proyectos y Aplicaciones",
+  },
+  "tech.experience": {
+    EN: "Professional experience",
+    ES: "Experiencia profesional",
+  },
 
   // Projects
   "projects.title": {
@@ -162,8 +182,8 @@ const translations = {
     ES: "Proyectos Destacados",
   },
   "projects.subtitle": {
-    EN: "A selection of my recent work showcasing my skills in full-stack development, AI integration, and cloud architecture.",
-    ES: "Una selección de mi trabajo reciente que muestra mis habilidades en desarrollo full-stack, integración de IA y arquitectura en la nube.",
+    EN: "A selection of my real-world projects showcasing expertise in AI integration, cloud architecture, and technical leadership.",
+    ES: "Una selección de mis proyectos reales que demuestran mi experiencia en integración de IA, arquitectura en la nube y liderazgo técnico.",
   },
   "projects.code": {
     EN: "Code",
@@ -173,29 +193,29 @@ const translations = {
     EN: "Demo",
     ES: "Demo",
   },
-  "project1.title": {
-    EN: "ClinicManager",
-    ES: "ClinicManager",
+  "projects.visit": {
+    EN: "Visit Site",
+    ES: "Visitar Sitio",
   },
-  "project1.description": {
-    EN: "A comprehensive SaaS application for healthcare providers to manage patient records, appointments, and billing.",
-    ES: "Una aplicación SaaS integral para proveedores de salud para gestionar registros de pacientes, citas y facturación.",
+  "projects.filter.all": {
+    EN: "All Projects",
+    ES: "Todos los Proyectos",
   },
-  "project2.title": {
-    EN: "Chatbot with Vertex AI",
-    ES: "Chatbot con Vertex AI",
+  "projects.filter.ai": {
+    EN: "AI & ML",
+    ES: "IA & ML",
   },
-  "project2.description": {
-    EN: "An intelligent customer service chatbot powered by Google's Vertex AI, capable of handling complex queries and providing personalized responses.",
-    ES: "Un chatbot inteligente de servicio al cliente impulsado por Vertex AI de Google, capaz de manejar consultas complejas y proporcionar respuestas personalizadas.",
+  "projects.filter.dashboard": {
+    EN: "Dashboards",
+    ES: "Dashboards",
   },
-  "project3.title": {
-    EN: "Real-Time Metrics Dashboard",
-    ES: "Panel de Métricas en Tiempo Real",
+  "projects.filter.web": {
+    EN: "Websites",
+    ES: "Sitios Web",
   },
-  "project3.description": {
-    EN: "A real-time analytics dashboard that visualizes key business metrics and KPIs with interactive charts and customizable views.",
-    ES: "Un panel de análisis en tiempo real que visualiza métricas comerciales clave y KPIs con gráficos interactivos y vistas personalizables.",
+  "projects.filter.chatbot": {
+    EN: "Chatbots",
+    ES: "Chatbots",
   },
 
   // Certifications
@@ -220,8 +240,8 @@ const translations = {
     ES: "Aprendizaje Continuo",
   },
   "cert.continuous.desc": {
-    EN: "I'm committed to ongoing professional development through online courses, workshops, and industry conferences to stay at the forefront of technology trends.",
-    ES: "Estoy comprometido con el desarrollo profesional continuo a través de cursos en línea, talleres y conferencias de la industria para mantenerme a la vanguardia de las tendencias tecnológicas.",
+    EN: "Over 5 years of intensive training in web development, programming languages, and generative AI technologies (LLMs), always staying updated with the latest tools in the market.",
+    ES: "Más de 5 años de formación intensiva en desarrollo web, lenguajes de programación y tecnologías de inteligencia artificial generativa (LLMs), manteniéndome siempre actualizado con las últimas herramientas del mercado.",
   },
   "cert.workshops": {
     EN: "AI/ML Workshops",
@@ -234,6 +254,10 @@ const translations = {
   "cert.conferences": {
     EN: "Tech Conferences",
     ES: "Conferencias Tech",
+  },
+  "cert.online": {
+    EN: "Online Courses",
+    ES: "Cursos Online",
   },
 
   // Contact

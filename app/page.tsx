@@ -7,7 +7,7 @@ import Projects from "@/components/projects"
 import Certifications from "@/components/certifications"
 import Contact from "@/components/contact"
 import CursorEffect from "@/components/cursor-effect"
-import WhatsAppChat from "@/components/whatsapp-chat"
+import WhatsAppForm from "@/components/whatsapp-form"
 import { useEffect, useState } from "react"
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
       <Projects />
       <Certifications />
       <Contact />
-      <WhatsAppChat />
+      <WhatsAppForm />
     </main>
   )
 }
