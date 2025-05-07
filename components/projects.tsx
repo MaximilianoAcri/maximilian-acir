@@ -71,8 +71,8 @@ export default function Projects() {
     {
       id: "grc-shield",
       title: {
-        EN: "GRC Shield – AI Risk Monitoring Dashboard",
-        ES: "GRC Shield – Dashboard de Monitoreo de Riesgos de IA",
+        EN: "Safety Shield – AI Risk Monitoring Dashboard",
+        ES: "Safety Shield – Dashboard de Monitoreo de Riesgos de IA",
       },
       description: {
         EN: "Real-time dashboard for AI risk monitoring, including prompt injection detection, data leakage, and behavioral drift. Modular backend with Firebase and Cloud Run.",

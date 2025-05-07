@@ -66,8 +66,8 @@ export default function Technologies() {
     Python: {
       title: "Python",
       description: {
-        EN: "I've used Python extensively for backend development, data processing, and AI/ML applications. My expertise includes FastAPI, Flask, and integrating with various AI services like OpenAI and Vertex AI.",
-        ES: "He utilizado Python extensivamente para desarrollo backend, procesamiento de datos y aplicaciones de IA/ML. Mi experiencia incluye FastAPI, Flask e integración con varios servicios de IA como OpenAI y Vertex AI.",
+        EN: "Over the past four years, I've leveraged Python to build robust backend services, streamline data workflows, and power AI/ML solutions. I've designed RESTful APIs with FastAPI, crafted microservices with Flask, and integrated advanced AI services—from fine-tuning OpenAI models to orchestrating pipelines in Vertex AI. My hands-on approach ensures clean, maintainable code and scalable performance.",
+        ES: "En los últimos cuatro años, he aprovechado Python para crear servicios backend sólidos, optimizar flujos de datos y potenciar soluciones de IA/ML. He diseñado APIs RESTful con FastAPI, construido microservicios con Flask e integrado servicios de IA avanzados, desde la personalización de modelos de OpenAI hasta la orquestación de pipelines en Vertex AI. Mi enfoque práctico garantiza código limpio, mantenible y un rendimiento escalable.",
       },
       projects: {
         EN: [
@@ -89,8 +89,8 @@ export default function Technologies() {
     JavaScript: {
       title: "JavaScript",
       description: {
-        EN: "JavaScript is fundamental to my frontend development workflow. I use it to create interactive UIs, handle API requests, and implement complex client-side logic. I'm proficient in modern ES6+ features and patterns.",
-        ES: "JavaScript es fundamental en mi flujo de trabajo de desarrollo frontend. Lo uso para crear interfaces de usuario interactivas, manejar solicitudes API e implementar lógica compleja del lado del cliente. Soy competente en características y patrones modernos de ES6+.",
+        EN: "JavaScript is the backbone of my frontend work. I enjoy crafting interactive user experiences, handling complex client-side logic, and seamlessly consuming APIs. Whether it's leveraging modern ES6+ patterns, optimizing performance, or implementing modular architectures, I write code that feels intuitive and delivers smooth interactions.",
+        ES: "JavaScript es la columna vertebral de mi trabajo frontend. Disfruto creando experiencias de usuario interactivas, manejando lógica compleja en el cliente y consumiendo APIs de manera fluida. Ya sea aplicando patrones modernos de ES6+, optimizando rendimiento o implementando arquitecturas modulares, escribo código que resulta intuitivo y brinda interacciones fluidas.",
       },
       projects: {
         EN: [
@@ -112,8 +112,8 @@ export default function Technologies() {
     TypeScript: {
       title: "TypeScript",
       description: {
-        EN: "TypeScript has become my preferred language for all new JavaScript projects. I leverage its type system to create more robust, maintainable code and catch errors during development rather than runtime.",
-        ES: "TypeScript se ha convertido en mi lenguaje preferido para todos los nuevos proyectos de JavaScript. Aprovecho su sistema de tipos para crear código más robusto y mantenible, y detectar errores durante el desarrollo en lugar de en tiempo de ejecución.",
+        EN: "Embracing TypeScript has transformed how I build applications. By enforcing strong typing and clear interfaces, I catch issues early and maintain scalable codebases. From migrating large React projects to crafting shared libraries with precise type definitions, I leverage TypeScript to boost developer confidence and productivity.",
+        ES: "Adoptar TypeScript ha transformado mi forma de desarrollar aplicaciones. Al utilizar tipado fuerte e interfaces claras, detecto errores desde temprano y mantengo bases de código escalables. Desde migrar grandes proyectos React hasta crear bibliotecas compartidas con definiciones de tipo precisas, aprovecho TypeScript para aumentar la confianza y la productividad del equipo.",
       },
       projects: {
         EN: [
@@ -135,8 +135,8 @@ export default function Technologies() {
     React: {
       title: "React",
       description: {
-        EN: "React is my primary frontend framework. I've built everything from small widgets to enterprise-scale applications using React. I'm experienced with hooks, context, and modern state management solutions.",
-        ES: "React es mi framework frontend principal. He construido desde pequeños widgets hasta aplicaciones a escala empresarial usando React. Tengo experiencia con hooks, context y soluciones modernas de gestión de estado.",
+        EN: "React is my go-to for building dynamic UIs. I've developed everything from compact components to full-scale enterprise dashboards, using hooks, context API, and advanced state managers. My focus is on writing clean, reusable code that scales gracefully and keeps performance rock-solid.",
+        ES: "React es mi opción predeterminada para construir interfaces dinámicas. He desarrollado desde componentes compactos hasta paneles empresariales de gran escala, empleando hooks, context API y gestores de estado avanzados. Me enfoco en escribir código limpio y reutilizable que escale de manera eficiente y mantenga un rendimiento óptimo.",
       },
       projects: {
         EN: [
@@ -158,8 +158,8 @@ export default function Technologies() {
     "Node.js": {
       title: "Node.js",
       description: {
-        EN: "I use Node.js extensively for backend development, building RESTful APIs, microservices, and serverless functions. I'm experienced with Express, NestJS, and various database integrations.",
-        ES: "Utilizo Node.js extensivamente para desarrollo backend, construyendo APIs RESTful, microservicios y funciones serverless. Tengo experiencia con Express, NestJS y varias integraciones de bases de datos.",
+        EN: "With Node.js, I build dependable backend systems and scalable APIs. I've architected microservices using Express and NestJS, implemented real-time features with Socket.io, and deployed serverless functions across cloud platforms. My priority is delivering reliable, high-performance services that adapt to evolving requirements.",
+        ES: "Con Node.js, construyo sistemas backend confiables y APIs escalables. He diseñado microservicios con Express y NestJS, implementado funcionalidades en tiempo real con Socket.io y desplegado funciones serverless en diversas nubes. Mi prioridad es entregar servicios fiables y de alto rendimiento que se adapten a requisitos cambiantes.",
       },
       projects: {
         EN: [
@@ -181,8 +181,8 @@ export default function Technologies() {
     "Google Cloud Platform": {
       title: "Google Cloud Platform",
       description: {
-        EN: "I have extensive experience with GCP services, including Compute Engine, Cloud Functions, Cloud Run, and various database offerings. I design and implement cloud-native architectures for scalable applications.",
-        ES: "Tengo amplia experiencia con servicios de GCP, incluyendo Compute Engine, Cloud Functions, Cloud Run y varias ofertas de bases de datos. Diseño e implemento arquitecturas cloud-native para aplicaciones escalables.",
+        EN: "On Google Cloud Platform, I design and operate cloud-native architectures that balance scalability and cost-efficiency. From setting up multi-region clusters on GKE to automating CI/CD with Cloud Build and Cloud Run, and optimizing databases with Cloud SQL and Firestore, I ensure robust deployments tailored to business needs.",
+        ES: "En Google Cloud Platform, diseño y gestiono arquitecturas cloud-native que equilibran escalabilidad y eficiencia de costos. Desde configurar clústeres multi-región en GKE hasta automatizar CI/CD con Cloud Build y Cloud Run y optimizar bases de datos con Cloud SQL y Firestore, garantizo despliegues sólidos adaptados a las necesidades del negocio.",
       },
       projects: {
         EN: [
@@ -204,8 +204,8 @@ export default function Technologies() {
     "Vertex AI": {
       title: "Vertex AI",
       description: {
-        EN: "I specialize in integrating AI capabilities into applications using Google's Vertex AI platform. I've worked with custom model training, deployment, and inference for various use cases.",
-        ES: "Me especializo en integrar capacidades de IA en aplicaciones usando la plataforma Vertex AI de Google. He trabajado con entrenamiento, despliegue e inferencia de modelos personalizados para varios casos de uso.",
+        EN: "I specialize in bringing AI to production with Vertex AI. Whether it's training custom models, deploying scalable endpoints, or orchestrating MLOps pipelines, I've delivered solutions for content recommendation, document processing, and conversational agents. My hands-on experience ensures reliable, maintainable AI workflows.",
+        ES: "Me especializo en llevar la IA a producción con Vertex AI. Ya sea entrenando modelos personalizados, desplegando endpoints escalables u orquestando pipelines de MLOps, he entregado soluciones para recomendación de contenido, procesamiento de documentos y agentes conversacionales. Mi experiencia práctica garantiza flujos de trabajo de IA fiables y mantenibles.",
       },
       projects: {
         EN: [
@@ -224,8 +224,8 @@ export default function Technologies() {
         ES: "2+ años de experiencia profesional",
       },
     },
-  }
-
+  };
+  
   const technologies: TechCategory[] = [
     {
       category: t("tech.languages"),
